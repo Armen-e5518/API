@@ -19,7 +19,7 @@ class ContactsSearch extends Contacts
     public function rules()
     {
         return [
-            [['id', 'type','user_id'], 'integer'],
+            [['id', 'type','user_id','checkbox'], 'integer'],
             [['message', 'status', 'date'], 'safe'],
         ];
     }
@@ -66,11 +66,13 @@ class ContactsSearch extends Contacts
             return $dataProvider;
         }
 
+        
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'c.type' => $this->type,
             'c.user_id' => $this->user_id,
+            'c.checkbox' => $this->checkbox,
 //            'date' => $this->date,
         ]);
 

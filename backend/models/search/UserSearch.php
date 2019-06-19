@@ -2,10 +2,9 @@
 
 namespace backend\models\search;
 
-use Yii;
+use backend\models\User;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\User;
 
 /**
  * UserSearch represents the model behind the search form of `backend\models\User`.
@@ -46,7 +45,8 @@ class UserSearch extends User
     {
 
         $query = User::find()
-            ->andWhere(['<>', 'id', self::ADMIN_ID]);
+            ->andWhere(['<>', 'id', self::ADMIN_ID])
+            ->orderBy(['id' => SORT_DESC]);
 
         if ($role == 'client') {
             $query->andWhere(['role' => User::ROLE_CLIENT]);
@@ -54,6 +54,7 @@ class UserSearch extends User
         if ($role == 'manager') {
             $query->andWhere(['role' => User::ROLE_MANAGER]);
         }
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

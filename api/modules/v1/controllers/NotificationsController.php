@@ -37,6 +37,9 @@ class NotificationsController extends VActiveController
 //        return $behaviors;
 //    }
 
+    /**
+     * @return array
+     */
     public function actions()
     {
         $actions = parent::actions();

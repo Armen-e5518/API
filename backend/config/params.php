@@ -11,3 +11,4 @@ return [
     'subjectPasswordRecovery' => 'Operio IMMO password recovery',
     'subject_attachment' => 'New attachment from Operio IMMO mobile app',
 ];
+
